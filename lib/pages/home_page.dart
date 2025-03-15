@@ -1,36 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  List<bool> _isHover = [false, false, false];
 
   @override
   Widget build(BuildContext context) {
@@ -41,49 +20,127 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+        appBar: AppBar(
+          backgroundColor: Colors.black87,
+          actions: [
+            SizedBox(
+              width: 500,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 100,
+                    child: TextButton(
+                        onPressed: () {},
+                        onHover: (isHover) {
+                          setState(() {
+                            _isHover[0] = isHover;
+                          });
+                        },
+                        style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                        child: Text(
+                          "Company",
+                          style: TextStyle(
+                              color: _isHover[0] ? Colors.deepPurpleAccent : Color(0xff666666),
+                              fontSize: _isHover[0] ? 15 : 14,
+                              fontWeight: _isHover[0] ? FontWeight.w600 : FontWeight.w400),
+                        )),
+                  ),
+                  const Gap(10),
+                  SizedBox(
+                    width: 100,
+                    child: TextButton(
+                        onPressed: () {},
+                        onHover: (isHover) {
+                          setState(() {
+                            _isHover[1] = isHover;
+                          });
+                        },
+                        style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                        child: Text(
+                          "Product",
+                          style: TextStyle(
+                              color: _isHover[1] ? Colors.deepPurpleAccent : Color(0xff666666),
+                              fontSize: _isHover[1] ? 15 : 14,
+                              fontWeight: _isHover[1] ? FontWeight.w600 : FontWeight.w400),
+                        )),
+                  ),
+                  const Gap(10),
+                  SizedBox(
+                    width: 100,
+                    child: TextButton(
+                        onPressed: () {},
+                        onHover: (isHover) {
+                          setState(() {
+                            _isHover[2] = isHover;
+                          });
+                        },
+                        style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                        child: Text(
+                          "Contact",
+                          style: TextStyle(
+                              color: _isHover[2] ? Colors.deepPurpleAccent : Color(0xff666666),
+                              fontSize: _isHover[2] ? 15 : 14,
+                              fontWeight: _isHover[2] ? FontWeight.w600 : FontWeight.w400),
+                        )),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: MediaQuery.sizeOf(context).height,
+                width: MediaQuery.sizeOf(context).width,
+                decoration: BoxDecoration(gradient: RadialGradient(
+                    // begin: Alignment.topLeft,
+                    // end: Alignment.bottomRight,
+                    colors: [Colors.black87, Colors.black87, Colors.deepPurple, Colors.black87, Colors.black])),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                        // height: MediaQuery.sizeOf(context).height,
+                        child: Text(
+                          "Welcome to",
+                          style: TextStyle(color: Colors.white, fontSize: 30),
+                        )),
+                    SizedBox(
+                        // height: MediaQuery.sizeOf(context).height,
+                        child: Text(
+                          "DevOn Universe",
+                          style: TextStyle(color: Colors.white, fontSize: 80, fontWeight: FontWeight.w600,),
+                        )),
+                  ],
+                ),
+              ),
+              Container(
+                height: 300,
+                width: MediaQuery.sizeOf(context).width,
+                color: Colors.black87,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 1024,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("사업자 등록번호 : 580-05-03207 / 대표 : 김종관", style: TextStyle(color: Color(0xff888888), fontSize: 18),),
+                          const Gap(10),
+                          Text("주소 : 경기도 광주시 경안천로 91 / 이메일 : ecar1234@naver.com", style: TextStyle(color: Color(0xff888888), fontSize: 18),)
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ));
   }
 }
