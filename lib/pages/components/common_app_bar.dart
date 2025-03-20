@@ -92,27 +92,27 @@ class _CommonAppBarState extends State<CommonAppBar> {
                 )),
           ),
           const Gap(10),
-          SizedBox(
-            width: 100,
-            child: TextButton(
-                onPressed: () {
-                  widget.onNavigate("/contact");
-                  // currentIndex =3;
-                },
-                onHover: (isHover) {
-                  setState(() {
-                    _isHover[3] = isHover;
-                  });
-                },
-                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                child: Text(
-                  "Contact",
-                  style: TextStyle(
-                      color: _isHover[3] || widget.idx.value == 3 ? Colors.deepPurple[300] : Color(0xff666666),
-                      fontSize: _isHover[3] ? 15 : 14,
-                      fontWeight: _isHover[3] || widget.idx.value == 3 ? FontWeight.w600 : FontWeight.w400),
-                )),
-          ),
+          // SizedBox(
+          //   width: 100,
+          //   child: TextButton(
+          //       onPressed: () {
+          //         widget.onNavigate("/contact");
+          //         // currentIndex =3;
+          //       },
+          //       onHover: (isHover) {
+          //         setState(() {
+          //           _isHover[3] = isHover;
+          //         });
+          //       },
+          //       style: TextButton.styleFrom(padding: EdgeInsets.zero),
+          //       child: Text(
+          //         "Contact",
+          //         style: TextStyle(
+          //             color: _isHover[3] || widget.idx.value == 3 ? Colors.deepPurple[300] : Color(0xff666666),
+          //             fontSize: _isHover[3] ? 15 : 14,
+          //             fontWeight: _isHover[3] || widget.idx.value == 3 ? FontWeight.w600 : FontWeight.w400),
+          //       )),
+          // ),
         ],
       ),
     );
