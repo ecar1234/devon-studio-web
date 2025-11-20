@@ -37,7 +37,7 @@ class _ProductPageState extends State<ProductPage> {
                     NavigationRailDestination(
                         icon: Icon(Icons.devices),
                         label: Text(
-                          "Application (1)",
+                          "Application (2)",
                           style: TextStyle(color: Colors.white, fontSize: _selected == 0 ? 16 : 14, fontWeight: _selected == 0 ? FontWeight.w600 : FontWeight.w400),
                         )),
                     NavigationRailDestination(
