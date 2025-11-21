@@ -1,10 +1,4 @@
-import 'package:devon_studio_web/pages/company_page.dart';
-import 'package:devon_studio_web/pages/contact_page.dart';
-import 'package:devon_studio_web/pages/main_page.dart';
-import 'package:devon_studio_web/pages/product_page.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 
 class MyHomePage extends StatefulWidget {
   final Function(String) onNavigate;
@@ -15,7 +9,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<bool> _isHover = [false, false, false, false];
+  // final List<bool> _isHover = [false, false, false, false];
   PageController pageController = PageController();
   int currentIndex = 0;
 

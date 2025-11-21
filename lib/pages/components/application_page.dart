@@ -1,9 +1,10 @@
-import 'package:devon_studio_web/pages/support_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class ApplicationPage extends StatelessWidget {
-  const ApplicationPage({super.key});
+  final Function(String title) onNavigateToSupport;
+  const ApplicationPage({super.key, required this.onNavigateToSupport});
 
   @override
   Widget build(BuildContext context) {
@@ -61,12 +62,7 @@ class ApplicationPage extends StatelessWidget {
                               SizedBox(
                                   child: TextButton.icon(
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => const SupportPage(
-                                                      title: "Ready Go",
-                                                    )));
+                                        onNavigateToSupport('ReadyGo');
                                       },
                                     label: Text(
                                       '고객지원',
@@ -133,12 +129,8 @@ class ApplicationPage extends StatelessWidget {
                               SizedBox(
                                 child: TextButton.icon(
                                   onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => const SupportPage(
-                                                  title: "TESTUS",
-                                                )));
+                                    final String productTitle = "TESTUS"; // 실제 제품 제목
+                                    onNavigateToSupport(productTitle);
                                   },
                                   label: Text(
                                     '고객지원',
