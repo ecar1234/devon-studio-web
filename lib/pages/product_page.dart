@@ -3,7 +3,8 @@ import 'package:devon_studio_web/pages/components/brand_page.dart';
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatefulWidget {
-  const ProductPage({super.key});
+  final Function(String title) onNavigateToSupport;
+  const ProductPage({super.key, required this.onNavigateToSupport});
 
   @override
   State<ProductPage> createState() => _ProductPageState();
@@ -17,7 +18,7 @@ class _ProductPageState extends State<ProductPage> {
     Widget? page;
     switch(_selected){
       case 0:
-        page = const ApplicationPage();
+        page = ApplicationPage(onNavigateToSupport: widget.onNavigateToSupport);
         break;
       case 1:
         page = const BrandPage();

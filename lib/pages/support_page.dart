@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:devon_studio_web/data/product_model.dart';
 import 'package:devon_studio_web/data/support_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -58,7 +57,7 @@ class _SupportPageState extends State<SupportPage> {
 
   @override
   Widget build(BuildContext context) {
-    final product = widget.title == 'Ready Go' ? supportData?.products![0] : supportData?.products![1];
+    final product = widget.title == 'ReadyGo' ? supportData?.products![0] : supportData?.products![1];
 
     if (supportData == null) return Center(child: CircularProgressIndicator());
     return Scaffold(

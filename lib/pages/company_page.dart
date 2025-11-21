@@ -8,7 +8,7 @@ class CompanyPage extends StatefulWidget {
 }
 
 class _CompanyPageState extends State<CompanyPage> {
-  List<bool> _isLoaded = [false, false];
+  final List<bool> _isLoaded = [false, false];
 
   @override
   void initState() {
