@@ -1,8 +1,10 @@
 import 'package:devon_studio_web/route/route_delegator.dart';
 import 'package:devon_studio_web/route/router_infomation_parser.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter_web_plugins/url_strategy.dart';
 
 void main() {
+  // usePathUrlStrategy();
   runApp(const MyApp());
 }
 

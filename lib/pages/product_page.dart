@@ -29,23 +29,26 @@ class _ProductPageState extends State<ProductPage> {
         children: [
           SafeArea(
             child: Container(
-              color: Colors.black,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border(right: BorderSide(color: Colors.black, width: 1)),
+              ),
               padding: EdgeInsets.all(20),
               child: NavigationRail(
-                  backgroundColor: Colors.black,
+                  backgroundColor: Colors.white,
                   extended: constraints.maxWidth >= 600,
                   destinations: [
                     NavigationRailDestination(
                         icon: Icon(Icons.devices),
                         label: Text(
                           "Application (2)",
-                          style: TextStyle(color: Colors.white, fontSize: _selected == 0 ? 16 : 14, fontWeight: _selected == 0 ? FontWeight.w600 : FontWeight.w400),
+                          style: TextStyle(color: Colors.black, fontSize: _selected == 0 ? 16 : 14, fontWeight: _selected == 0 ? FontWeight.w600 : FontWeight.w400),
                         )),
                     NavigationRailDestination(
                         icon: Icon(Icons.design_services),
                         label: Text(
                           "Brand (0)",
-                          style: TextStyle(color: Colors.white, fontSize:  _selected == 1 ? 16 : 14, fontWeight: _selected == 1 ? FontWeight.w600 : FontWeight.w400),
+                          style: TextStyle(color: Colors.black, fontSize:  _selected == 1 ? 16 : 14, fontWeight: _selected == 1 ? FontWeight.w600 : FontWeight.w400),
                         ))
                   ],
                   onDestinationSelected: (val) {

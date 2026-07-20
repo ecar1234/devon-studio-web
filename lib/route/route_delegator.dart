@@ -7,6 +7,7 @@ import '../pages/company_page.dart';
 import '../pages/contact_page.dart';
 import '../pages/product_page.dart';
 import '../pages/support_page.dart';
+import '../pages/terms_page.dart';
 
 class MyRouterDelegate extends RouterDelegate<String> with ChangeNotifier, PopNavigatorRouterDelegateMixin<String> {
   String _selectedPage = '/';
@@ -23,6 +24,49 @@ class MyRouterDelegate extends RouterDelegate<String> with ChangeNotifier, PopNa
     }
     return _selectedPage;
   }
+
+  @override
+  Future<void> setNewRoutePath(String configuration) async {
+    print('👉 현재 들어온 URL: $configuration');
+    final uri = Uri.parse(configuration);
+
+    // 1. '/product/support/상품명' 3단계 동적 경로 처리
+    if (uri.pathSegments.length == 3 &&
+        uri.pathSegments[0] == 'product' &&
+        uri.pathSegments[1] == 'support') {
+      _selectedPage = '/product/support';
+      _selectedProductTitle = Uri.decodeComponent(uri.pathSegments[2]);
+      _currentIndexNotifier.value = 2; // Product 탭 활성화
+    }
+    // 2. 일반 단일 경로 처리 ('/', '/company', '/product', '/contact' 등)
+    else {
+      _selectedPage = configuration;
+      _selectedProductTitle = null; // 일반 페이지 이동 시 이전에 남아있던 상품 제목 리셋
+
+      switch (configuration) {
+        case '/':
+          _currentIndexNotifier.value = 0;
+          break;
+        case '/company':
+          _currentIndexNotifier.value = 1;
+          break;
+        case '/product':
+          _currentIndexNotifier.value = 2;
+          break;
+        case '/contact':
+          _currentIndexNotifier.value = 3;
+          break;
+        default:
+          _currentIndexNotifier.value = 0;
+          break;
+      }
+    }
+
+    // 💡 [핵심] 주소창 입력/새로고침으로 바뀐 변수 상태를 감지하여
+    // pages: [...] 리스트를 다시 그리도록 프레임워크에 알립니다.
+    notifyListeners();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +104,11 @@ class MyRouterDelegate extends RouterDelegate<String> with ChangeNotifier, PopNa
               key: ValueKey('/contact'),
               child: ContactPage(),
             ),
+          if(_selectedPage == '/terms_of_service')
+            MaterialPage(
+              key: ValueKey('/terms_of_service'),
+              child: TermsPage(),
+            ),
         ],
         onDidRemovePage: (page) {
           // if (_selectedPage == '/product/support') {
@@ -73,36 +122,36 @@ class MyRouterDelegate extends RouterDelegate<String> with ChangeNotifier, PopNa
     );
   }
 
-  @override
-  Future<void> setNewRoutePath(String configuration) async {
-    final uri = Uri.parse(configuration);
-    if (uri.pathSegments.length == 3 && uri.pathSegments[0] == 'product' && uri.pathSegments[1] == 'support') {
-      _selectedPage = '/product/support';
-      _selectedProductTitle = Uri.decodeComponent(uri.pathSegments[2]);
-      _currentIndexNotifier.value = 2;
-    } else {
-      _selectedPage = configuration;
-      switch (configuration) {
-        case '/':
-          _currentIndexNotifier.value = 0;
-          break;
-        case '/company':
-          _currentIndexNotifier.value = 1;
-          break;
-        case '/product':
-          _currentIndexNotifier.value = 2;
-          break;
-        case '/contact':
-          _currentIndexNotifier.value = 3;
-          break;
-        default:
-          _currentIndexNotifier.value = 0;
-          break;
-      }
-    }
-
-    notifyListeners();
-  }
+  // @override
+  // Future<void> setNewRoutePath(String configuration) async {
+  //   final uri = Uri.parse(configuration);
+  //   if (uri.pathSegments.length == 3 && uri.pathSegments[0] == 'product' && uri.pathSegments[1] == 'support') {
+  //     _selectedPage = '/product/support';
+  //     _selectedProductTitle = Uri.decodeComponent(uri.pathSegments[2]);
+  //     _currentIndexNotifier.value = 2;
+  //   } else {
+  //     _selectedPage = configuration;
+  //     switch (configuration) {
+  //       case '/':
+  //         _currentIndexNotifier.value = 0;
+  //         break;
+  //       case '/company':
+  //         _currentIndexNotifier.value = 1;
+  //         break;
+  //       case '/product':
+  //         _currentIndexNotifier.value = 2;
+  //         break;
+  //       case '/contact':
+  //         _currentIndexNotifier.value = 3;
+  //         break;
+  //       default:
+  //         _currentIndexNotifier.value = 0;
+  //         break;
+  //     }
+  //   }
+  //
+  //   notifyListeners();
+  // }
 
   void _handleNavigateToSupport(String title) {
     _selectedPage = '/product/support';

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:devon_studio_web/data/support_model.dart';
+import 'package:devon_studio_web/pages/privacy_policy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
@@ -72,26 +73,25 @@ class _SupportPageState extends State<SupportPage> {
             child: Container(
                 width: constraints.maxWidth,
                 padding: EdgeInsets.all(30),
-                decoration:
-                    BoxDecoration(gradient: LinearGradient(colors: [Colors.black, Colors.black, Colors.deepPurple])),
+                color: Colors.white,
                 child: SizedBox(
                   width: constraints.maxWidth * 0.5,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("${product!.title} (IOS, ANDROID)", style: TextStyle(fontSize: 44, fontWeight: FontWeight.bold, color: Colors.white), textAlign: TextAlign.center),
+                      Text("${product!.title} (IOS, ANDROID)", style: TextStyle(fontSize: 44, fontWeight: FontWeight.bold, color: Colors.black), textAlign: TextAlign.center),
                       const Gap(20),
-                      Text("${product.subTitle}", style: TextStyle(fontSize: 28, color: Colors.white), textAlign: TextAlign.center),
+                      Text("${product.subTitle}", style: TextStyle(fontSize: 28, color: Colors.black), textAlign: TextAlign.center),
                       const Gap(20),
-                      Text("${product.description}", style: TextStyle(fontSize: 20, color: Colors.white), textAlign: TextAlign.center),
+                      Text("${product.description}", style: TextStyle(fontSize: 20, color: Colors.black), textAlign: TextAlign.center),
                       const Gap(20),
-                      Text("${product.contents}", style: TextStyle(fontSize: 18, color: Colors.white), textAlign: TextAlign.center),
+                      Text("${product.contents}", style: TextStyle(fontSize: 18, color: Colors.black), textAlign: TextAlign.center),
                       const Gap(20),
                       SizedBox(
                         width: constraints.maxWidth * 0.4,
                         child: Column(
                           children: [
-                            Text("앱의 기능", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white)),
+                            Text("앱의 기능", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black)),
                             const Gap(10),
                             ListView.separated(
                               shrinkWrap: true,
@@ -104,7 +104,7 @@ class _SupportPageState extends State<SupportPage> {
                                       Padding(
                                         // 텍스트가 여러 줄일 경우 아이콘이 중앙에 오는 것을 방지하기 위해 Padding을 사용
                                         padding: const EdgeInsets.only(top: 4.0),
-                                        child: Icon(Icons.check_circle, color: Colors.white),
+                                        child: Icon(Icons.check_circle, color: Colors.black),
                                       ),
                                       const Gap(10),
 
@@ -117,7 +117,7 @@ class _SupportPageState extends State<SupportPage> {
                                             // 'title' 텍스트
                                             Text(
                                               "${product.features![idx]['title']}",
-                                              style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+                                              style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
                                               softWrap: true,
                                             ),
                                             const Gap(4), // 제목과 설명 사이의 간격
@@ -125,7 +125,7 @@ class _SupportPageState extends State<SupportPage> {
                                             // 'description' 텍스트
                                             Text(
                                               "${product.features![idx]['description']}",
-                                              style: TextStyle(fontSize: 18, color: Colors.white),
+                                              style: TextStyle(fontSize: 18, color: Colors.black),
                                               softWrap: true, // Expanded 내부에 있으므로 정상적으로 줄바꿈됩니다.
                                             ),
                                           ],
@@ -138,13 +138,13 @@ class _SupportPageState extends State<SupportPage> {
                         ),
                       ),
                       const Gap(20),
-                      Text("이 페이지는 ${widget.title}의 공식 고객지원 페이지 입니다.", style: TextStyle(fontSize: 18, color: Colors.white),),
+                      Text("이 페이지는 ${widget.title}의 공식 고객지원 페이지 입니다.", style: TextStyle(fontSize: 18, color: Colors.black),),
                       const Gap(10),
-                      Text("${supportData!.address}", style: TextStyle(fontSize: 16, color: Colors.white),),
+                      Text("${supportData!.address}", style: TextStyle(fontSize: 16, color: Colors.black),),
                       const Gap(10),
                       TextButton(onPressed: (){
                         // final url = Uri.parse("${supportData!.privacyPolicy}");
-                        launchUrl(Uri.parse("${supportData!.privacyPolicy}"));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => PrivacyPolicy()));
                       }, child: Text("개인정보 보호 정책", style: TextStyle(fontSize: 16, color: Colors.redAccent),))
                     ],
                   ),
