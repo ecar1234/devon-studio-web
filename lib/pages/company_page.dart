@@ -36,7 +36,7 @@ class _CompanyPageState extends State<CompanyPage> {
       body: LayoutBuilder(builder: (context, constraints) {
         return Container(
           padding: EdgeInsets.all(20),
-          decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.black, Colors.black, Colors.deepPurple])),
+          decoration: BoxDecoration(color: Colors.white),
           child: Center(
             child: SizedBox(
               width: constraints.maxWidth / 1.5,
@@ -56,7 +56,7 @@ class _CompanyPageState extends State<CompanyPage> {
                             children: [
                               Text(
                                 "Make a part of life!",
-                                style: TextStyle(color: Colors.white, fontSize: 80, fontWeight: FontWeight.w600),
+                                style: TextStyle(color: Colors.black, fontSize: 80, fontWeight: FontWeight.w600),
                               ),
                             ],
                           ),
@@ -73,7 +73,7 @@ class _CompanyPageState extends State<CompanyPage> {
                                     "조금의 변화로 인하여 삶의 큰 틀이 바뀌고 있습니다. 우리가 살아가는 시대는 블루오션을 찾을 수 없고 "
                                     "많은 블랙오션을 피해, 레드오션 속에서 돌파구를 찾을 수 있어야만 앞으로 나아 갈 수 있습니다."
                                     "DevOn Studio는 그러한 아주 작은 변화와 돌파구를 찾아 나서는 개발을 하려 합니다.",
-                                    style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+                                    style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),
                                   )),
                             ],
                           ),
@@ -97,7 +97,7 @@ class _CompanyPageState extends State<CompanyPage> {
                                   duration: const Duration(milliseconds: 500),
                                   child: Text(
                                     "Slow, but striving for perfection!",
-                                    style: TextStyle(color: Colors.white, fontSize: 60, fontWeight: FontWeight.w600),
+                                    style: TextStyle(color: Colors.black, fontSize: 60, fontWeight: FontWeight.w600),
                                   )),
                             ],
                           ),
@@ -112,7 +112,7 @@ class _CompanyPageState extends State<CompanyPage> {
                                     "모든 것이 빠르게 변화하고 잠깐의 반짝임을 유행이라 치부하는 현시대에서 우리는 잠깐의 반짝임이 아닌, "
                                     "느리고 조금은 덜 빛나더라도 오래 빛나고 더 따듯한 빛을 발하는 그런 PRODUCT를 만드는 것이 우리의 차별점 입니다."
                                     "하나를 만들더라도 빠르지만 미완성인 것보다, 조금은 느리더라도 더 나은 제품을 만드는것이 개발자가 가져야하는 완벽을 찾는 마음가짐이 아닐까요?",
-                                    style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+                                    style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),
                                   )),
                             ],
                           ),

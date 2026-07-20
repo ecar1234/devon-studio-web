@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MainPage extends StatefulWidget {
   final Function(String) onNavigate;
@@ -42,7 +43,7 @@ class _MainPageState extends State<MainPage> {
             height: MediaQuery.sizeOf(context).height,
             width: MediaQuery.sizeOf(context).width,
             decoration:
-                BoxDecoration(gradient: RadialGradient(colors: [Colors.black87, Colors.black87, Colors.deepPurple, Colors.black87, Colors.black])),
+                BoxDecoration(color: Colors.white),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -51,25 +52,36 @@ class _MainPageState extends State<MainPage> {
                     duration: Duration(milliseconds: 500),
                     child: Text(
                       "Welcome to",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
+                      style: TextStyle(color: Colors.black, fontSize: 40, letterSpacing: 5),
                     )),
+                const Gap(40),
                 AnimatedOpacity(
                     opacity: _isVisible[1] ? 1 : 0,
                     duration: Duration(milliseconds: 500),
                     child: Text(
-                      "DevOn Universe",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 80,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      "DevOn",
+                      style: GoogleFonts.archivoBlack(
+                        textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 100,
+                          // fontWeight: FontWeight.w600,
+                          letterSpacing: 10,
+                        )
+                      )
                     )),
                 AnimatedOpacity(
                     opacity: _isVisible[2] ? 1 : 0,
                     duration: Duration(milliseconds: 500),
                     child: Text(
                       "-Studio-",
-                      style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.w600, letterSpacing: 50),
+                      style: GoogleFonts.archivoBlack(
+                        textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 30,
+                          // fontWeight: FontWeight.w600,
+                          letterSpacing: 50,
+                        )
+                      )
                     )),
               ],
             ),
@@ -94,7 +106,7 @@ class _MainPageState extends State<MainPage> {
                       ),
                       const Gap(10),
                       Text(
-                        "주소 : 경기도 광주시 경안천로 91 / 이메일 : ecar1234@naver.com",
+                        "주소 : 경기도 광주시 경안천로 91 / 이메일 : devonst@gmail.com",
                         style: TextStyle(color: Color(0xff888888), fontSize: 18),
                       )
                     ],
