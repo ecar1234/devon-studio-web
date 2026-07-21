@@ -109,6 +109,11 @@ class MyRouterDelegate extends RouterDelegate<String> with ChangeNotifier, PopNa
               key: ValueKey('/terms_of_service'),
               child: TermsPage(),
             ),
+          if(_selectedPage == '/privacy_policy')
+            MaterialPage(
+              key: ValueKey('/privacy_policy'),
+              child: TermsPage(),
+            ),
         ],
         onDidRemovePage: (page) {
           // if (_selectedPage == '/product/support') {
